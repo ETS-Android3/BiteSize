@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "60322857179",
+    "firebase_url": "https://bite-size-abaa8.firebaseio.com",
+    "project_id": "bite-size-abaa8",
+    "storage_bucket": "bite-size-abaa8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60322857179:android:613150735bb80b84c18cfe",
+        "android_client_info": {
+          "package_name": "com.example.bitesize"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60322857179-20ljlkpokt1os1eoc1aq8i617gj20t04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH8O1prRmDZuMtKQ1OiquO0N_OTjBmUI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60322857179-20ljlkpokt1os1eoc1aq8i617gj20t04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

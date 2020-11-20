@@ -1,76 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="#FFF">
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <EditText
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="10dp"
-        android:id="@+id/emailEditText"
-        android:hint="E-mail"/>
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_marginTop="10dp"
-        android:id="@+id/passwordEditText"
-        android:hint="Password" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Bite Size"
+            android:textColor="#333333"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_like" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <Button
-            android:text="Login"
-            android:id="@+id/loginButton"
-            android:layout_width="140dp"
-            android:layout_height="45dp"
-            android:textColor="#FFFF"
-            android:textAllCaps="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorAccent"/>
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/search_bg"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:drawablePadding="16dp"
+            android:ems="10"
+            android:hint="Search..."
+            android:inputType="textPersonName"
+            android:paddingStart="16dp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <Button
-            android:text="Register!"
-            android:id="@+id/registerButton"
-            android:layout_width="140dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="#FFFF"
-            android:background="@color/colorAccent"/>
-    </LinearLayout>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Most favourited"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
 
-    <Button
-        android:text="I forgot password"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:id="@+id/forgotPasswordButton"
-        android:background="@null"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginBottom="8dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/popular_recycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="OR"
-        android:gravity="center"
-        android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="Recommended for You"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/popular_recycler" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="15dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommended_recycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-</LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/textView4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="24dp"-->
+<!--            android:fontFamily="@font/open_sans_bold"-->
+<!--            android:text="All Menu Items"-->
+<!--            android:textColor="#333333"-->
+<!--            android:textSize="18sp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/recommended_recycler" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/all_menu_recycler"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="500dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView4"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

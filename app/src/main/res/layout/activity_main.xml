@@ -59,7 +59,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="Most favourited"
+            android:text="Most Favorited"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

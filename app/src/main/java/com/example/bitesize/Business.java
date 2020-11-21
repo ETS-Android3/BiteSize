@@ -11,10 +11,25 @@ public class Business {
     private int reviewCount;
     private ArrayList<String> categories;
     private String instagramURL;
+    private int imageResourceId;
+
+
+
+
+    private static ArrayList<String> testing_categories;
+    public static final Business[] businesses = {
+            new Business("Yugo Sushi Bake", "Testing", "Burnaby", (float) 4.8, 25, 100, testing_categories = new ArrayList<String>(), "Instagram.com", R.drawable.recommended1)
+    };
+
+    public static Object[] getAllBusinesses() {
+        return businesses;
+    }
+
+
 
     public Business() {}
 
-    public Business(String name, String bio, String city, float rating, int cost, int reviewCount, ArrayList<String> categories, String instagramURL) {
+    public Business(String name, String bio, String city, float rating, int cost, int reviewCount, ArrayList<String> categories, String instagramURL, int imageResourceId) {
         this.name = name;
         this.bio = bio;
         this.city = city;
@@ -23,6 +38,7 @@ public class Business {
         this.reviewCount = reviewCount;
         this.categories = categories;
         this.instagramURL = instagramURL;
+        this.imageResourceId = imageResourceId;
     }
 
     public String getName() {
@@ -88,4 +104,31 @@ public class Business {
     public void setInstagramURL(String instagramURL) {
         this.instagramURL = instagramURL;
     }
+
+    public int getImageResourceId() {
+        return imageResourceId;
+    }
+
+    public void setImageResourceId(int imageResourceId) {
+        this.imageResourceId = imageResourceId;
+    }
+
+
+
+    public static Business getBusinessByName(String name) {
+        Business business = null;
+        for (int i = 0; i < businesses.length; i++ ) {
+            Business b = businesses[i];
+            if (name.toLowerCase().trim().equals(b.getName().toLowerCase())) {
+                business = b;
+                break;
+            }
+        }
+
+        return business;
+    }
+
+
+
+
 }

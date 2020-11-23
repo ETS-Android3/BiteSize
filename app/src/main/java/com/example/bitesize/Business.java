@@ -18,7 +18,7 @@ public class Business {
 
     private static ArrayList<String> testing_categories;
     public static final Business[] businesses = {
-            new Business("Yugo Sushi Bake", "Testing", "Burnaby", (float) 4.8, 25, 100, testing_categories = new ArrayList<String>(), "Instagram.com", R.drawable.recommended1)
+            new Business("Yugo Sushi Bake", "Testing", "Burnaby", (float) 4.8, 25, 100, testing_categories = new ArrayList<String>(), "https://www.instagram.com/yugosushibake/?hl=en", R.drawable.recommended1)
     };
 
     public static Object[] getAllBusinesses() {

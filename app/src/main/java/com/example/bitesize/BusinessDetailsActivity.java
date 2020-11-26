@@ -3,6 +3,7 @@ package com.example.bitesize;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +23,17 @@ public class BusinessDetailsActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private void displayBusinessDetails() {
+
+        ImageView backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         String businessName = (String) getIntent().getExtras().get("businessName");
 
         final Business business = Business.getBusinessByName(businessName);
@@ -32,10 +43,13 @@ public class BusinessDetailsActivity extends AppCompatActivity {
             food_text.setText(business.getName());
 
             RatingBar business_rating = findViewById(R.id.ratingBar);
-            business_rating.setStepSize(0.5f);
+            business_rating.setStepSize(0.25f);
             business_rating.setRating(business.getRating());
 
-            ImageView business_image = findViewById(R.id.imageView5);
+            TextView rating = findViewById(R.id.rating);
+            rating.setText(Float.toString(business.getRating()));
+
+            ImageView business_image = findViewById(R.id.businessLogo);
             business_image.setImageDrawable(ContextCompat.getDrawable(this, business.getImageResourceId()));
             business_image.setContentDescription(business.getName());
 
@@ -54,6 +68,12 @@ public class BusinessDetailsActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+
+
+            TextView location_text = findViewById(R.id.textViewLocation);
+            location_text.setText(business.getCity());
+
 
 
         }

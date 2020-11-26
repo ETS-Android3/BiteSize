@@ -7,18 +7,19 @@ public class Business {
     private String bio;
     private String city;
     private float rating;
-    private int cost;
+    private int price;
+    private ArrayList<String> reviews;
     private int reviewCount;
     private ArrayList<String> categories;
     private String instagramURL;
     private int imageResourceId;
 
 
-
-
     private static ArrayList<String> testing_categories;
+    private static ArrayList<MenuItem> testing_menu;
     public static final Business[] businesses = {
-            new Business("Yugo Sushi Bake", "Testing", "Burnaby", (float) 4.8, 25, 100, testing_categories = new ArrayList<String>(), "https://www.instagram.com/yugosushibake/?hl=en", R.drawable.recommended1)
+            new Business("Yugo Sushi Bake", "Testing", "Burnaby", (float) 4.8, 25,
+                    testing_categories = new ArrayList<String>(), "https://www.instagram.com/yugosushibake/?hl=en", R.drawable.recommended1, testing_menu)
     };
 
     public static Object[] getAllBusinesses() {
@@ -26,23 +27,50 @@ public class Business {
     }
 
 
+    private ArrayList<MenuItem> menu;
 
     public Business() {}
 
-    public Business(String name, String bio, String city, float rating, int cost, int reviewCount, ArrayList<String> categories, String instagramURL, int imageResourceId) {
+    public Business(String name, String bio, String city, float rating, int price, ArrayList<String> categories, String instagramURL, int imageResourceId, ArrayList<MenuItem> menu) {
         this.name = name;
         this.bio = bio;
         this.city = city;
         this.rating = rating;
-        this.cost = cost;
-        this.reviewCount = reviewCount;
+        this.price = price;
+        this.reviews = new ArrayList<>();
+        this.reviewCount = this.reviews.size();
         this.categories = categories;
         this.instagramURL = instagramURL;
         this.imageResourceId = imageResourceId;
+        this.menu = menu;
     }
 
     public String getName() {
         return name;
+    }
+
+    public ArrayList<String> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(ArrayList<String> reviews) {
+        this.reviews = reviews;
+    }
+
+    public ArrayList<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(ArrayList<String> categories) {
+        this.categories = categories;
+    }
+
+    public ArrayList<MenuItem> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(ArrayList<MenuItem> menu) {
+        this.menu = menu;
     }
 
     public void setName(String name) {
@@ -73,12 +101,12 @@ public class Business {
         this.rating = rating;
     }
 
-    public int getCost() {
-        return cost;
+    public int getPrice() {
+        return price;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getReviewCount() {
@@ -87,14 +115,6 @@ public class Business {
 
     public void setReviewCount(int reviewCount) {
         this.reviewCount = reviewCount;
-    }
-
-    public ArrayList<String> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(ArrayList<String> categories) {
-        this.categories = categories;
     }
 
     public String getInstagramURL() {

@@ -2,6 +2,7 @@ package com.example.bitesize;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -10,12 +11,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    RecyclerView popularRecyclerView, recommendedRecyclerView, allMenuRecyclerView;
+
+    PopularAdapter popularAdapter;
+    RecommendedAdapter recommendedAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         RecyclerView businessRecycler = findViewById(R.id.popular_recycler);
@@ -40,7 +49,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
 
+    private void getPopularData(List<Business> popularList){
+
+        popularRecyclerView = findViewById(R.id.popular_recycler);
+        popularAdapter = new PopularAdapter(this, popularList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        popularRecyclerView.setLayoutManager(layoutManager);
+        popularRecyclerView.setAdapter(popularAdapter);
+
+    }
+
+    private void getRecommendedData(List<Business> recommendedList){
+
+        recommendedRecyclerView = findViewById(R.id.recommended_recycler);
+        recommendedAdapter = new RecommendedAdapter(this, recommendedList);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recommendedRecyclerView.setLayoutManager(layoutManager);
+        recommendedRecyclerView.setAdapter(recommendedAdapter);
 
     }
 }

@@ -1,7 +1,7 @@
 package com.example.bitesize;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -13,18 +13,55 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class BusinessDetailsActivity extends AppCompatActivity {
+
+    DatabaseReference databaseBusinesses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_details);
-        displayBusinessDetails();
+
+        System.out.println(getIntent().getExtras().getString("businessName"));
+        databaseBusinesses = FirebaseDatabase.getInstance().getReference("businesses");
+//        databaseBusinesses.orderByKey().equalTo(getIntent().getExtras().getString("businessName"));
+        Business business = new Business();
+        databaseBusinesses.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot businessSnapshot : dataSnapshot.getChildren()) {
+                    if (businessSnapshot.child("name").getValue(String.class).equals(getIntent().getExtras().getString("businessName"))) {
+                        System.out.println(businessSnapshot.child("name").getValue(String.class));
+                        business.setName(businessSnapshot.child("name").getValue(String.class));
+                        business.setBio(businessSnapshot.child("bio").getValue(String.class));
+                        business.setCity(businessSnapshot.child("city").getValue(String.class));
+                        business.setImageName(businessSnapshot.child("imageName").getValue(String.class));
+                        business.setInstagramURL(businessSnapshot.child("instagramURL").getValue(String.class));
+                        business.setPrice(businessSnapshot.child("price").getValue(Integer.class));
+                        business.setRating(businessSnapshot.child("rating").getValue(Float.class));
+                    }
+                }
+                displayBusinessDetails(business);
+
+            };
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+
     }
 
 
+
     @SuppressLint("SetTextI18n")
-    private void displayBusinessDetails() {
+    private void displayBusinessDetails(Business business) {
 
         ImageView backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -34,11 +71,8 @@ public class BusinessDetailsActivity extends AppCompatActivity {
             }
         });
 
-        String businessName = (String) getIntent().getExtras().get("businessName");
-
-        final Business business = Business.getBusinessByName(businessName);
-
         if (business != null) {
+
             TextView food_text = findViewById(R.id.name);
             food_text.setText(business.getName());
 
@@ -50,7 +84,11 @@ public class BusinessDetailsActivity extends AppCompatActivity {
             rating.setText(Float.toString(business.getRating()));
 
             ImageView business_image = findViewById(R.id.businessLogo);
+            business_image.setImageResource(getResources().getIdentifier(business.getImageName(), "drawable", getPackageName()));
             business_image.setContentDescription(business.getName());
+
+            TextView biography = findViewById(R.id.businessDetails);
+            biography.setText(business.getBio());
 
 
             Button clickButton = (Button) findViewById(R.id.instagram_button);
@@ -77,9 +115,9 @@ public class BusinessDetailsActivity extends AppCompatActivity {
 
         }
     }
-
-
-
-
-
 }
+
+
+
+
+

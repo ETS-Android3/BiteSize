@@ -31,7 +31,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/backButton"
-            app:srcCompat="@drawable/recommended1" />
+            app:srcCompat="@drawable/recommended0" />
 
         <TextView
             android:id="@+id/name"
@@ -88,6 +88,22 @@
             app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
         <TextView
+            android:id="@+id/textViewLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:lineSpacingExtra="2dp"
+            android:text="@string/location"
+            android:textSize="16sp"
+            android:gravity="bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/price"
+            app:layout_constraintTop_toBottomOf="@+id/price" />
+
+        <TextView
             android:id="@+id/businessDetails"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -98,8 +114,8 @@
             android:text="Yugo Sushi Bake is a home business that sells sushi bakes! Grab a spoonful and eat it wrapped up in a piece of dried seaweed. The perfect food to share with friends and family, and also fun to eat!"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/price"
-            app:layout_constraintTop_toBottomOf="@+id/price" />
+            app:layout_constraintStart_toStartOf="@+id/textViewLocation"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
 
 
         <Button
@@ -121,21 +137,7 @@
             app:layout_constraintTop_toBottomOf="@+id/businessDetails"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/textViewLocation"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/open_sans_bold"
-            android:lineSpacingExtra="2dp"
-            android:text="@string/location"
-            android:textSize="16sp"
-            android:gravity="bottom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/instagram_button"
-            app:layout_constraintTop_toBottomOf="@+id/instagram_button" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

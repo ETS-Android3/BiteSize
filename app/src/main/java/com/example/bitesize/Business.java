@@ -12,14 +12,14 @@ public class Business {
     private int reviewCount;
     private ArrayList<String> categories;
     private String instagramURL;
-    private int imageResourceId;
+    private String imageName;
 
 
     private static ArrayList<String> testing_categories;
     private static ArrayList<MenuItem> testing_menu;
     public static final Business[] businesses = {
             new Business("Yugo Sushi Bake", "Testing", "Burnaby", (float) 4.5, 25,
-                    testing_categories = new ArrayList<String>(), "https://www.instagram.com/yugosushibake/?hl=en", R.drawable.recommended1, testing_menu)
+                    testing_categories = new ArrayList<String>(), "https://www.instagram.com/yugosushibake/?hl=en", "recommended0", testing_menu)
     };
 
     public static Object[] getAllBusinesses() {
@@ -31,7 +31,7 @@ public class Business {
 
     public Business() {}
 
-    public Business(String name, String bio, String city, float rating, int price, ArrayList<String> categories, String instagramURL, int imageResourceId, ArrayList<MenuItem> menu) {
+    public Business(String name, String bio, String city, float rating, int price, ArrayList<String> categories, String instagramURL, String imageName, ArrayList<MenuItem> menu) {
         this.name = name;
         this.bio = bio;
         this.city = city;
@@ -41,7 +41,7 @@ public class Business {
         this.reviewCount = this.reviews.size();
         this.categories = categories;
         this.instagramURL = instagramURL;
-        this.imageResourceId = imageResourceId;
+        this.imageName = imageName;
         this.menu = menu;
     }
 
@@ -125,15 +125,14 @@ public class Business {
         this.instagramURL = instagramURL;
     }
 
-    public int getImageResourceId() {
-        return imageResourceId;
+
+    public String getImageName() {
+        return imageName;
     }
 
-    public void setImageResourceId(int imageResourceId) {
-        this.imageResourceId = imageResourceId;
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
-
-
 
     public static Business getBusinessByName(String name) {
         Business business = null;

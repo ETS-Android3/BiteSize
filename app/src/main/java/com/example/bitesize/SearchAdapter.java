@@ -43,7 +43,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
         // for image we add Glide library dependency for image fetching from server
 
-        Glide.with(context).load(searchList.get(position).getImageResourceId()).into(holder.searchImage);
+        Glide.with(context)
+                .load(context.getResources().getIdentifier(searchList.get(position).getImageName(), "drawable", context.getPackageName()))
+                .into(holder.searchImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +54,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 i.putExtra("name", searchList.get(position).getName());
                 i.putExtra("price", searchList.get(position).getPrice());
                 i.putExtra("rating", searchList.get(position).getRating());
-                i.putExtra("image", searchList.get(position).getImageResourceId());
+                i.putExtra("image", context.getResources().getIdentifier(searchList.get(position).getImageName(), "drawable", context.getPackageName()));
 
                 context.startActivity(i);
             }

@@ -43,7 +43,11 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
         // for image we add Glide library dependency for image fetching from server
 
-        Glide.with(context).load(popularList.get(position).getImageResourceId()).into(holder.popularImage);
+//        Glide.with(context).load(popularList.get(position).getImageResourceId()).into(holder.popularImage);
+        Glide.with(context)
+                // Load in the image ID, but this time do it dynamically.
+                .load(context.getResources().getIdentifier(popularList.get(position).getImageName(), "drawable", context.getPackageName()))
+                .into(holder.popularImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +56,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
                 i.putExtra("name", popularList.get(position).getName());
                 i.putExtra("price", popularList.get(position).getPrice());
                 i.putExtra("rating", popularList.get(position).getRating());
-                i.putExtra("image", popularList.get(position).getImageResourceId());
+                i.putExtra("image", context.getResources().getIdentifier(popularList.get(position).getImageName(), "drawable", context.getPackageName()));
 
                 context.startActivity(i);
             }

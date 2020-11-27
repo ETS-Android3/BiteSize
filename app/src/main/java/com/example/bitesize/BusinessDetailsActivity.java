@@ -50,7 +50,6 @@ public class BusinessDetailsActivity extends AppCompatActivity {
             rating.setText(Float.toString(business.getRating()));
 
             ImageView business_image = findViewById(R.id.businessLogo);
-            business_image.setImageDrawable(ContextCompat.getDrawable(this, business.getImageResourceId()));
             business_image.setContentDescription(business.getName());
 
 

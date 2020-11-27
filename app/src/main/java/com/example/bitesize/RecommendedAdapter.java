@@ -41,7 +41,10 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         holder.recommendedReviewCount.setText(recommendedList.get(position).getReviewCount());
         holder.recommendedPrice.setText(recommendedList.get(position).getPrice());
 
-        Glide.with(context).load(recommendedList.get(position).getImageResourceId()).into(holder.recommendedImage);
+        Glide.with(context)
+                // Load in the image ID, but this time do it dynamically.
+                .load(context.getResources().getIdentifier(recommendedList.get(position).getImageName(), "drawable", context.getPackageName()))
+                .into(holder.recommendedImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +53,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
                 i.putExtra("name", recommendedList.get(position).getName());
                 i.putExtra("price", recommendedList.get(position).getPrice());
                 i.putExtra("rating", recommendedList.get(position).getRating());
-                i.putExtra("image", recommendedList.get(position).getImageResourceId());
+                i.putExtra("image", context.getResources().getIdentifier(recommendedList.get(position).getImageName(), "drawable", context.getPackageName()));
 
                 context.startActivity(i);
             }

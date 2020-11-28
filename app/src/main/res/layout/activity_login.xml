@@ -5,11 +5,16 @@
     android:gravity="center"
     android:background="#FFF">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:id="@+id/emailEditText"
         android:hint="E-mail"/>
 

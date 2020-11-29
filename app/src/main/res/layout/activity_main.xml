@@ -82,14 +82,14 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="Recommended for You"
+            android:text="All Businesses"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/popular_recycler" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommended_recycler"
+            android:id="@+id/all_recycler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

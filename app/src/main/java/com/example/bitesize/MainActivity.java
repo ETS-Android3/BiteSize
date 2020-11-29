@@ -7,10 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,9 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 RecyclerView businessRecycler = findViewById(R.id.popular_recycler);
+                RecyclerView allRecycler = findViewById(R.id.all_recycler);
                 String[] businessNames = new String[businessList.size()];
                 int[] businessImages = new int[businessList.size()];
                 for (int i = 0; i < businessList.size(); i++) {
@@ -57,9 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
                 CaptionedImagesAdapter adapter = new CaptionedImagesAdapter(businessNames, businessImages);
                 businessRecycler.setAdapter(adapter);
+                allRecycler.setAdapter(adapter);
 
-                GridLayoutManager lm = new GridLayoutManager(MainActivity.this, 2);
+                GridLayoutManager lm = new GridLayoutManager(MainActivity.this, 1, RecyclerView.HORIZONTAL, false);
                 businessRecycler.setLayoutManager(lm);
+                GridLayoutManager lm2 = new GridLayoutManager(MainActivity.this, 2);
+                allRecycler.setLayoutManager(lm2);
 
 
                 adapter.setListener(new CaptionedImagesAdapter.Listener() {
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getRecommendedData(List<Business> recommendedList){
 
-        recommendedRecyclerView = findViewById(R.id.recommended_recycler);
+        recommendedRecyclerView = findViewById(R.id.all_recycler);
         recommendedAdapter = new RecommendedAdapter(this, recommendedList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recommendedRecyclerView.setLayoutManager(layoutManager);

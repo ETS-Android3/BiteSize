@@ -40,23 +40,11 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.AllMen
         holder.menuItemName.setText(menuList.get(position).getName());
         holder.menuItemPrice.setText(menuList.get(position).getPrice());
         holder.menuItemRating.setText(menuList.get(position).getRating());
-        holder.menuItemNote.setText(menuList.get(position).getNote());
+        holder.menuItemNote.setText(menuList.get(position).getDescription());
+        holder.menuItemImage.setImageResource(context.getResources().getIdentifier(menuList.get(position).getImageName(), "drawable", context.getPackageName() ));
+//        getResources().getIdentifier(business.getImageName(), "drawable", getPackageName())
 
-        Glide.with(context).load(menuList.get(position).getImageUrl()).into(holder.menuItemImage);
 
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context, MenuItem.class);
-                i.putExtra("name", menuList.get(position).getName());
-                i.putExtra("price", menuList.get(position).getPrice());
-                i.putExtra("rating", menuList.get(position).getRating());
-                i.putExtra("image", menuList.get(position).getImageUrl());
-
-                context.startActivity(i);
-            }
-        });
 
     }
 

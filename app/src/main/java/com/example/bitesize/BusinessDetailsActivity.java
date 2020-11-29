@@ -28,7 +28,6 @@ public class BusinessDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_details);
 
-        System.out.println(getIntent().getExtras().getString("businessName"));
         databaseBusinesses = FirebaseDatabase.getInstance().getReference("businesses");
 //        databaseBusinesses.orderByKey().equalTo(getIntent().getExtras().getString("businessName"));
         Business business = new Business();
@@ -91,8 +90,8 @@ public class BusinessDetailsActivity extends AppCompatActivity {
             biography.setText(business.getBio());
 
 
-            Button clickButton = (Button) findViewById(R.id.instagram_button);
-            clickButton.setOnClickListener( new View.OnClickListener() {
+            Button instagramButton = (Button) findViewById(R.id.instagram_button);
+            instagramButton.setOnClickListener( new View.OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
@@ -112,6 +111,16 @@ public class BusinessDetailsActivity extends AppCompatActivity {
             location_text.setText(business.getCity());
 
 
+            Button menuButton = (Button) findViewById(R.id.menu_button);
+            String businessName = business.getName();
+            menuButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(BusinessDetailsActivity.this, MenuActivity.class);
+                    i.putExtra("businessName", businessName);
+                    startActivity(i);
+                    }
+                });
 
         }
     }

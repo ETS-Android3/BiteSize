@@ -2,10 +2,10 @@ package com.example.bitesize;
 
 public class MenuItem {
     private String name;
-    private String imageUrl;
+    private String imageName;
     private String rating;
     private String price;
-    private String note;
+    private String description;
 
     public String getName() {
         return name;
@@ -15,12 +15,12 @@ public class MenuItem {
         this.name = name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageName() {
+        return imageName;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public String getRating() {
@@ -39,12 +39,12 @@ public class MenuItem {
         this.price = price;
     }
 
-    public String getNote() {
-        return note;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

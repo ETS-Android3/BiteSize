@@ -122,6 +122,19 @@ public class BusinessDetailsActivity extends AppCompatActivity {
                     }
                 });
 
+
+
+
+            Button reviewsButton = (Button) findViewById(R.id.reviews_button);
+            reviewsButton.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(BusinessDetailsActivity.this, ReviewsActivity.class);
+                    i.putExtra("businessName", businessName);
+                    startActivity(i);
+                }
+            });
+
         }
     }
 }

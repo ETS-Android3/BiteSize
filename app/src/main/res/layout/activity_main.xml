@@ -7,7 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".MainActivity">
 
         <TextView
@@ -17,7 +17,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="Bite Size"
+            android:text="@string/bite_size"
             android:textColor="#333333"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,16 +41,17 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/search_bg"
-            android:drawableLeft="@drawable/ic_search_black_24dp"
+            android:drawableStart="@drawable/ic_search_black_24dp"
             android:drawablePadding="16dp"
             android:ems="10"
-            android:hint="Search..."
+            android:hint="@string/search"
             android:inputType="textPersonName"
             android:paddingStart="16dp"
             android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="RtlSymmetry" />
 
         <TextView
             android:id="@+id/textView2"
@@ -59,7 +60,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="Most Popular"
+            android:text="@string/most_popular"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +83,7 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/open_sans_bold"
-            android:text="All Businesses"
+            android:text="@string/all_businesses"
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,34 +1,25 @@
 package com.example.bitesize;
 
 public class Review {
-    private User user;
-    private Business business;
+    private String name;
     private String review;
-    private int rating;
+    private float rating;
 
     public Review() {}
 
-    public Review(User user, Business business, String review, int rating) {
-        this.user = user;
-        this.business = business;
+    public Review(String name, String review, float rating) {
+        this.name = name;
+
         this.review = review;
         this.rating = rating;
     }
 
-    public User getUser() {
-        return user;
+    public String getName() {
+        return name;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Business getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(Business business) {
-        this.business = business;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getReview() {
@@ -39,11 +30,11 @@ public class Review {
         this.review = review;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 }

@@ -34,7 +34,7 @@
             app:srcCompat="@drawable/ic_like" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/search_bar"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
@@ -63,7 +63,7 @@
             android:textColor="#333333"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/popular_recycler"
@@ -97,28 +97,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/textView4"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:layout_marginTop="24dp"-->
-<!--            android:fontFamily="@font/open_sans_bold"-->
-<!--            android:text="All Menu Items"-->
-<!--            android:textColor="#333333"-->
-<!--            android:textSize="18sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/recommended_recycler" />-->
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="50dp"
+            android:layout_height="49dp"
+            android:visibility="visible"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/search_bar"
+            app:layout_constraintEnd_toEndOf="@+id/search_bar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/search_bar"
+            app:layout_constraintTop_toTopOf="@+id/search_bar" />
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/all_menu_recycler"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="500dp"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textView4"-->
-<!--            app:layout_constraintVertical_bias="0.0" />-->
+        <!--        <TextView-->
+        <!--            android:id="@+id/textView4"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:layout_marginTop="24dp"-->
+        <!--            android:fontFamily="@font/open_sans_bold"-->
+        <!--            android:text="All Menu Items"-->
+        <!--            android:textColor="#333333"-->
+        <!--            android:textSize="18sp"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/recommended_recycler" />-->
+
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/all_menu_recycler"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="500dp"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/textView4"-->
+        <!--            app:layout_constraintVertical_bias="0.0" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -8,6 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseReference databaseBusinesses;
     ArrayList<Business> businessList = new ArrayList<>();
+    EditText searchEditText;
+    Button searchButton;
 
     @Override
     protected void onStart() {
@@ -77,7 +83,32 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
 
+        searchEditText = findViewById(R.id.search_bar);
+        searchEditText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    Intent i = new Intent(MainActivity.this, SearchActivity.class);
+                    i.putExtra("keyword", searchEditText.getText().toString().trim());
+                    searchEditText.setText("");
+                    startActivity(i);
+                    return true;
+                }
+                return false;
+            }
+        });
 
+        searchButton = findViewById(R.id.searchButton);
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, SearchActivity.class);
+                i.putExtra("keyword", searchEditText.getText().toString().trim());
+                searchEditText.setText("");
+                startActivity(i);
+            }
+        });
     }
 
 

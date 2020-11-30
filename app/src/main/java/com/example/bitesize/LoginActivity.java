@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     FirebaseAuth mAuth;
     private EditText emailTV, passwordTV;
-    private Button loginBtn, registerBtn;
+    private Button loginBtn, registerBtn, resetBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registerNewUser();
+            }
+        });
+
+        // Forgot password
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetPassword();
             }
         });
 
@@ -160,10 +168,31 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    private void resetPassword() {
+        String email;
+        email = emailTV.getText().toString();
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplication(), "Please enter email!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "We have sent you instructions to reset your password!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Failed to send reset email!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });;
+    }
+
     private void initializeUI() {
         emailTV = findViewById(R.id.emailEditText);
         passwordTV = findViewById(R.id.passwordEditText);
-
+        resetBtn = findViewById(R.id.forgotPasswordButton);
         loginBtn = findViewById(R.id.loginButton);
         registerBtn = findViewById(R.id.registerButton);
     }

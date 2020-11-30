@@ -16,7 +16,7 @@ Must be Android API Version 28 or greater.
 Fork the project and clone onto your desktop, and install on an emulator. Or drag the .apk file into an emulator.
 
 ## Functionalities
-Firebase authentication login with either e-mail/pw or Google account  
+Firebase authentication login with either e-mail/pw or Google account (Google account only works on our computers due to SHA-1 certificate, unless we sign an apk)  
 Firebase reset password  
 Firebase logout  
 Firebase read and write  

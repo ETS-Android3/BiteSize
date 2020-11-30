@@ -17,6 +17,7 @@ Fork the project and clone onto your desktop, and install on an emulator. Or dra
 
 ## Functionalities
 Firebase authentication login with either e-mail/pw or Google account  
+Firebase reset password  
 Firebase logout  
 Firebase read and write  
 Search bar for tags or exact name match    

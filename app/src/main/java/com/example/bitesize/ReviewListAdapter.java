@@ -40,11 +40,11 @@ public class ReviewListAdapter extends ArrayAdapter<Review> {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
 
-        View listViewItem = inflater.inflate(R.layout.list_layout, null, true);
+        View listViewItem = inflater.inflate(R.layout.review_recycler_items, null, true);
 
-        TextView tvName = listViewItem.findViewById(R.id.textViewName);
-        TextView tvRating = listViewItem.findViewById(R.id.textViewRating);
-        TextView tvReview = listViewItem.findViewById(R.id.textViewReview);
+        TextView tvName = listViewItem.findViewById(R.id.user_name);
+        TextView tvRating = listViewItem.findViewById(R.id.user_rating);
+        TextView tvReview = listViewItem.findViewById(R.id.user_review);
 
         Review review = reviewList.get(position);
         tvName.setText(review.getName());

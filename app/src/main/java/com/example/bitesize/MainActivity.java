@@ -3,7 +3,6 @@ package com.example.bitesize;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -21,14 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
-    RecyclerView popularRecyclerView, recommendedRecyclerView;
-
-    PopularAdapter popularAdapter;
-    RecommendedAdapter recommendedAdapter;
 
     DatabaseReference databaseBusinesses;
     ArrayList<Business> businessList = new ArrayList<>();
@@ -90,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
@@ -124,32 +115,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-    }
-
-    private void getPopularData(List<Business> popularList){
-
-
-        popularRecyclerView = findViewById(R.id.popular_recycler);
-        popularAdapter = new PopularAdapter(this, popularList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        popularRecyclerView.setLayoutManager(layoutManager);
-        popularRecyclerView.setAdapter(popularAdapter);
-
-    }
-
-    private void getRecommendedData(List<Business> recommendedList){
-
-        recommendedRecyclerView = findViewById(R.id.all_recycler);
-        recommendedAdapter = new RecommendedAdapter(this, recommendedList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recommendedRecyclerView.setLayoutManager(layoutManager);
-        recommendedRecyclerView.setAdapter(recommendedAdapter);
 
     }
 }

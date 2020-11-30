@@ -1,6 +1,5 @@
 package com.example.bitesize;
 
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;

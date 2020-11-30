@@ -41,11 +41,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
 
         holder.popularName.setText(popularList.get(position).getName());
 
-        // for image we add Glide library dependency for image fetching from server
-
-//        Glide.with(context).load(popularList.get(position).getImageResourceId()).into(holder.popularImage);
         Glide.with(context)
-                // Load in the image ID, but this time do it dynamically.
                 .load(context.getResources().getIdentifier(popularList.get(position).getImageName(), "drawable", context.getPackageName()))
                 .into(holder.popularImage);
 

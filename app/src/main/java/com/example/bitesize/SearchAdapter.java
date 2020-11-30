@@ -28,11 +28,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     @NonNull
     @Override
     public SearchViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(context).inflate(R.layout.popular_recycler_items, parent, false);
-        // here we need to create a layout for recyclerview cell items.
-
-
         return new SearchViewHolder(view);
     }
 
@@ -40,8 +36,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public void onBindViewHolder(@NonNull SearchViewHolder holder, final int position) {
 
         holder.searchName.setText(searchList.get(position).getName());
-
-        // for image we add Glide library dependency for image fetching from server
 
         Glide.with(context)
                 .load(context.getResources().getIdentifier(searchList.get(position).getImageName(), "drawable", context.getPackageName()))

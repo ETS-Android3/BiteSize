@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    // Registers a new user and logs in
     private void registerNewUser() {
         String email, password;
         email = emailTV.getText().toString();
@@ -126,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
+    // Logs into an existing account
     private void loginUserAccount() {
 
         String email, password;
@@ -169,7 +171,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {

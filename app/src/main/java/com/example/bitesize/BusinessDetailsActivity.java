@@ -50,7 +50,6 @@ public class BusinessDetailsActivity extends AppCompatActivity {
 
             };
 
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
         });
@@ -106,12 +105,11 @@ public class BusinessDetailsActivity extends AppCompatActivity {
             });
 
 
-
             TextView location_text = findViewById(R.id.textViewLocation);
             location_text.setText(business.getCity());
 
 
-            Button menuButton = (Button) findViewById(R.id.menu_button);
+            Button menuButton = findViewById(R.id.menu_button);
             String businessName = business.getName();
             menuButton.setOnClickListener( new View.OnClickListener() {
                 @Override
@@ -125,7 +123,7 @@ public class BusinessDetailsActivity extends AppCompatActivity {
 
 
 
-            Button reviewsButton = (Button) findViewById(R.id.reviews_button);
+            Button reviewsButton = findViewById(R.id.reviews_button);
             reviewsButton.setOnClickListener( new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

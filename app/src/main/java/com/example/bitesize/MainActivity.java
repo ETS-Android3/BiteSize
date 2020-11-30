@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView popularRecyclerView, recommendedRecyclerView, allMenuRecyclerView;
+    RecyclerView popularRecyclerView, recommendedRecyclerView;
 
     PopularAdapter popularAdapter;
     RecommendedAdapter recommendedAdapter;
@@ -32,11 +33,23 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseBusinesses;
     ArrayList<Business> businessList = new ArrayList<>();
     EditText searchEditText;
-    Button searchButton;
+    Button searchButton, logoutButton;
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        // Logout
+        logoutButton = findViewById(R.id.logout);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
         databaseBusinesses = FirebaseDatabase.getInstance().getReference("businesses");
         databaseBusinesses.addValueEventListener(new ValueEventListener() {
             @Override

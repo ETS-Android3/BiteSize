@@ -2,7 +2,10 @@ package com.example.bitesize;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,11 +35,31 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 123;
     FirebaseAuth mAuth;
+    private EditText emailTV, passwordTV;
+    private Button loginBtn, registerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        initializeUI();
+
+        // Email login
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginUserAccount();
+            }
+        });
+
+        // Email register
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerNewUser();
+            }
+        });
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -49,17 +72,9 @@ public class LoginActivity extends AppCompatActivity {
         SignInButton googleLogin = findViewById(R.id.sign_in_button);
         googleLogin.setOnClickListener(handleGoogleLogin);
         mAuth = FirebaseAuth.getInstance();
-
-        // some weird glitch here where it keeps toasting
-        //Google sign
-        GoogleSignInAccount signInAccount= GoogleSignIn.getLastSignedInAccount(this);
-        if(signInAccount!=null){
-            Toast.makeText(this, "Welcome back " + signInAccount.getDisplayName() , Toast.LENGTH_SHORT).show();
-        }
     }
 
     protected void onStart() {
-
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser!=null){
@@ -73,12 +88,83 @@ public class LoginActivity extends AppCompatActivity {
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+    private void registerNewUser() {
+        String email, password;
+        email = emailTV.getText().toString();
+        password = passwordTV.getText().toString();
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(), "Please enter email!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Registration failed! Please try again later", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
+
     private View.OnClickListener handleGoogleLogin = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             signIn();
         }
     };
+
+    private void loginUserAccount() {
+
+        String email, password;
+        email = emailTV.getText().toString();
+        password = passwordTV.getText().toString();
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(), "Please enter email!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+    }
+
+    private void initializeUI() {
+        emailTV = findViewById(R.id.emailEditText);
+        passwordTV = findViewById(R.id.passwordEditText);
+
+        loginBtn = findViewById(R.id.loginButton);
+        registerBtn = findViewById(R.id.registerButton);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

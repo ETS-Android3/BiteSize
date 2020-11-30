@@ -17,11 +17,11 @@ Fork the project and clone onto your desktop, and install on an emulator. Or dra
 
 ## Functionalities
 Firebase authentication login with either e-mail/pw or Google account  
-Firebase logout
+Firebase logout  
 Firebase read and write  
 Search bar for tags or exact name match    
 View businesses  
-Direct link to Instagram on button click  
+Direct link to business Instagram on button click  
 Add and view reviews  
 View menu items for each business  
 

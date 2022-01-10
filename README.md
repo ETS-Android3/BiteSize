@@ -1,6 +1,6 @@
 # Bite Size
 
-Bite Size is an Android application, built using Java and Firebase, that gathers online food businesses (example: https://www.instagram.com/yugosushibake/) onto a central platform. Current problem is that there doesn't exist a central place to find these small businesses (unlike Yelp), and they're hard to find outside of social media and word of mouth. We want to highlight small, local food businesses to everyone who wants to support them. They exist in communities everywhere around the world, and our app aims to connect them together.
+Bite Size is an Android application, built using Java and Firebase, that gathers online food businesses (example: https://www.instagram.com/yugosushibake/) onto a central platform. Current problem is that there is no central place to find these small businesses (unlike Yelp), and they're hard to find outside of social media and word of mouth. We want to highlight small, local food businesses to everyone who wants to support them. They exist in communities everywhere around the world, and our app aims to connect them together.
 
 ## Screenshots
 <img src="Login_page.png" title="Login Page">
